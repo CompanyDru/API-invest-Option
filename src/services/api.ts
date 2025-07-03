@@ -8,7 +8,7 @@ import {
 } from '../types/api';
 
 class InvestOptionAPI {
-  private baseURL = 'https://api.investoption.com';
+  private baseURL = '/api';
   private token: string | null = null;
   private ssid: string | null = null;
 
