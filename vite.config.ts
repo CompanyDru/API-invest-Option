@@ -11,7 +11,6 @@ export default defineConfig({
       '/api': {
         target: 'https://api-demo.investoption.com',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
         secure: true
       }
     }
