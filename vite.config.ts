@@ -6,13 +6,6 @@ export default defineConfig({
   plugins: [react()],
   server: {
     host: true,
-    port: 5173,
-    proxy: {
-      '/api': {
-        target: 'https://api-demo.investoption.com',
-        changeOrigin: true,
-        secure: true
-      }
-    }
+    port: 5173
   }
 })
