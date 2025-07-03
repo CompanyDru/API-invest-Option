@@ -16,6 +16,10 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onLogin, isLoading }) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!credentials.email || !credentials.password) {
+      alert('Por favor, preencha todos os campos');
+      return;
+    }
     await onLogin(credentials);
   };
 
@@ -52,6 +56,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onLogin, isLoading }) => {
               placeholder="seu@email.com"
               required
               disabled={isLoading}
+              autoComplete="email"
             />
           </div>
 
@@ -70,6 +75,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onLogin, isLoading }) => {
                 placeholder="Sua senha da corretora"
                 required
                 disabled={isLoading}
+                autoComplete="current-password"
               />
               <button
                 type="button"
@@ -89,7 +95,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onLogin, isLoading }) => {
           <button
             type="submit"
             className="btn-primary w-full"
-            disabled={isLoading}
+            disabled={isLoading || !credentials.email || !credentials.password}
           >
             {isLoading ? (
               <div className="flex items-center justify-center">
@@ -110,6 +116,14 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onLogin, isLoading }) => {
             <p className="font-medium mb-1">⚠️ IMPORTANTE</p>
             <p>Use apenas suas credenciais REAIS da Invest Option</p>
             <p className="mt-1">O robô executará operações em sua conta real</p>
+          </div>
+        </div>
+
+        <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+          <div className="text-center text-xs text-blue-800">
+            <p className="font-medium mb-1">💡 MODO DEMONSTRAÇÃO</p>
+            <p>Se não conseguir conectar com a API real,</p>
+            <p>o sistema funcionará em modo de demonstração</p>
           </div>
         </div>
 
